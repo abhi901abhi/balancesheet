@@ -9,15 +9,12 @@ import CoursesPage from './components/Courses/CoursesPage';
 const App = props => ({
   render() {
     return (
-      <div className="App">
-        <div>
-          <Header />
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/courses" component={CoursesPage} />
-          </Switch>
-        </div>
-
+      <div>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/courses" component={CoursesPage} />
+        </Switch>
       </div>
     );
   }

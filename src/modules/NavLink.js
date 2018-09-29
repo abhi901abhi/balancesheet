@@ -13,8 +13,11 @@ class NavLink extends React.Component {
     }
     render() {
         return (
-            <li onClick={this.handleClick} className={this.props.selected === this.props.name ? 'active' : null}>
-                <Link {...this.props} />
+            <li onClick={this.handleClick} className={this.props.selected === this.props.name ? 'nav-item active' : 'nav-item'}>
+                {/* <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> */}
+                <Link {...this.props} class="nav-link">
+
+                </Link>
             </li>
         );
     }
