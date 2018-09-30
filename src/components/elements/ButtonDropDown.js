@@ -1,24 +1,48 @@
 import React from 'react';
 
-class ButtonDropdown extends React.Component {
-    state = {
-        isOpen: false
-    };
 
-    toggleOpen = () => this.setState(
-        {
-            isOpen: !this.state.isOpen
+let menuClass = `dropdown-menu`;
+
+class ButtonDropdown extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            open: false
+        }
+    }
+
+
+    toggleOpen = (e) => {
+        debugger;
+        var name = e.target.name;
+        this.setState((prevState, props) => {
+            props.onActionItemClick(name, !JSON.parse(JSON.stringify(prevState.open)));
+            return {
+                open: !JSON.parse(JSON.stringify(prevState.open))
+            }
         });
+    }
 
     render() {
-        const menu2Class = `dropdown-menu${this.state.isOpen ? " show" : ""}`;
+        debugger;
+
+        if (this.props.isActive) {
+            menuClass = menuClass + ' show';
+        } else {
+            menuClass = `dropdown-menu`
+        }
+
         return (
 
-            <div className="btn-group" onClick={this.toggleOpen}>
-                <button type="button" className={`btn btn-${this.props.className}  mr-1`} >
-                    {this.props.text}
+            <div className="btn-group" >
+                <button type="button" className={`btn btn-${this.props.className}  mr-1`} name={this.props.product.name + '$$' + this.props.text} onClick={this.toggleOpen}>
+                    {this.props.text} - {this.props.isActive + ''}
                 </button>
-                <div className={menu2Class}>
+
+
+                <div className={menuClass}>
                     <span className="dropdown-item cursor-pointer ">
                         -1
                     </span>

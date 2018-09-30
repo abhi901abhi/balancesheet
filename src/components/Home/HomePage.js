@@ -9,8 +9,20 @@ class HomePage extends React.Component {
     super(props);
     this.state = {
       items: [],
-      isCountDrodDownOpen: false
+      activatedDropDownMenuName: ""
     };
+  }
+
+  toggleCountersMenu = (name) => {
+    debugger;
+    var name1 = name;
+    this.setState((prevState) => {
+      debugger;
+      return {
+        activatedDropDownMenuName: name1
+      }
+    });
+
   }
 
 
@@ -25,7 +37,10 @@ class HomePage extends React.Component {
 
   }
 
+
   render() {
+    console.log('Home Page comp rendered');
+
     const colorClasses = ["primary", "secondary", "success", "danger", "light", "dark", "info"];
     let colorClass = "info";
     let i = 0;
@@ -35,7 +50,16 @@ class HomePage extends React.Component {
       i++;
       let cssText = `card text-` + ((colorClass === "light") ? "black" : (colorClass == undefined ? "black" : "white")) + ` bg-` + colorClass + ` maxWidth18rm`;
 
-      return <Card cssClassName={cssText} product={item}></Card>;
+      return <div>
+        <Card
+          cssClassName={cssText}
+          product={item}
+          activatedDropDownMenuName={this.state.activatedDropDownMenuName}
+          toggleCountersMenu={this.toggleCountersMenu}
+        >
+        </Card>;
+      </div>
+
     });
 
     return (
