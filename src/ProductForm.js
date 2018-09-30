@@ -7,7 +7,7 @@ class ProductForm extends React.Component {
         super(props);
         this.handleChange = this.handleChange.bind(this);
         this.handleSave = this.handleSave.bind(this);
-        debugger;
+
         alert('ProductForm Construction');
         this.state = {
             product: Object.assign({}, RESET_VALUES),
@@ -19,13 +19,13 @@ class ProductForm extends React.Component {
         // };
     }
     handleChange(e) {
-        debugger;
+
         const target = e.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
 
         this.setState((prevState) => {
-            debugger;
+
             prevState.product[name] = value;
             return {
                 product: prevState.product
@@ -33,7 +33,7 @@ class ProductForm extends React.Component {
         });
     }
     handleSave(e) {
-        debugger;
+
         this.props.onSave(this.state.product);
         this.setState({
             product: Object.assign({}, RESET_VALUES),

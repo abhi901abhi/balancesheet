@@ -13,7 +13,7 @@ class ColoredBlock extends React.Component {
         };
     }
     handleChangeColorButtonClick() {
-        debugger;
+
 
         if (style.backgroundColor === "blue") {
             style = { height: '200px', width: '200px', backgroundColor: 'red' };

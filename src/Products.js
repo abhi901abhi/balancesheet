@@ -41,7 +41,7 @@ class Products extends React.Component {
         });
     }
     handleSave(product) {
-        debugger;
+
         if (!product.id) {
             product.id = new Date().getTime();
         }
