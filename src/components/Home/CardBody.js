@@ -1,39 +1,52 @@
 import React from 'react';
-import Badge from '@material-ui/core/Badge';
-import { withStyles } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
-
-const styles = theme => ({
-    margin: {
-        margin: theme.spacing.unit * 2,
-    },
-    padding: {
-        padding: `0 ${theme.spacing.unit * 2}px`,
-    },
-});
+import Button from '@material-ui/core/Button';
+import ButtonDropdown from './../elements/ButtonDropDown';
 
 class CardBody extends React.Component {
 
-    render() {
-        const { classes } = this.props;
-        return (
-            <div className="card-body">
-                <h5 className="card-title">{this.props.product.name}</h5>
-                <p className="card-text text-center">
+    handleActionItemClick = (name) => {
+        this.props.onActionItemClick(name);
+    }
+    decreaseStock = (qty, type, product) => {
+        this.props.decreaseStock(qty, type, product);
+    }
 
-                    <img src={this.props.product.image} style={{ height: "150px", width: "150px" }} />
-                    <br />
-                </p>
-                Today Price:
-                <p>
-                    <span className={`badge badge-${this.props.cardClassName} mr-1 text-${this.props.cardClassName}`}>F ({this.props.product.todayPrice.full})</span>
-                    <span className={`badge badge-${this.props.cardClassName} mr-1 text-${this.props.cardClassName}`}>H ({this.props.product.todayPrice.half})</span>
-                    <span className={`badge badge-${this.props.cardClassName} mr-1  text-${this.props.cardClassName}`}>Q ({this.props.product.todayPrice.quarter})</span>
-                    <span className={`badge badge-${this.props.cardClassName} mr-1  text-${this.props.cardClassName}`}>90 ({this.props.product.todayPrice.ninty})</span>
-                </p>
-            </div >
+    render() {
+        console.log('Card Footer Drop Down comp rendered');
+        return (
+            <div className=" card-footer text-center">
+                <ButtonDropdown text="F" className="danger"
+                    product={this.props.product}
+                    onActionItemClick={this.handleActionItemClick}
+                    activatedIdStoredInParent={this.props.activatedIdStoredInParent}
+                    decreaseStock={this.decreaseStock}
+                ></ButtonDropdown>
+
+                <ButtonDropdown text="H" className="warning"
+                    product={this.props.product}
+                    onActionItemClick={this.handleActionItemClick}
+                    activatedIdStoredInParent={this.props.activatedIdStoredInParent}
+                    decreaseStock={this.decreaseStock}
+                ></ButtonDropdown>
+
+                <ButtonDropdown text="Q" className="success"
+                    product={this.props.product}
+                    onActionItemClick={this.handleActionItemClick}
+                    activatedIdStoredInParent={this.props.activatedIdStoredInParent}
+                    decreaseStock={this.decreaseStock}
+                ></ButtonDropdown>
+
+                <ButtonDropdown text="90" className="primary"
+                    product={this.props.product}
+                    onActionItemClick={this.handleActionItemClick}
+                    activatedIdStoredInParent={this.props.activatedIdStoredInParent}
+                    decreaseStock={this.decreaseStock}
+                ></ButtonDropdown>
+            </div>
         );
     }
+
+
 }
 
-export default withStyles(styles)(CardBody);
+export default CardBody;

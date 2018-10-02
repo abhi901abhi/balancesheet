@@ -6,8 +6,10 @@ import CardFooter from './CardFooter';
 class Card extends React.Component {
 
     handleActionClick = (name) => {
-        debugger;
         this.props.toggleCountersMenu(name);
+    }
+    decreaseStock = (qty, type, product) => {
+        this.props.decreaseStock(qty, type, product);
     }
     render() {
         console.log('Card comp rendered');
@@ -15,13 +17,15 @@ class Card extends React.Component {
         return (
             <div className={this.props.cssClassName} key={this.props.product.name}>
                 <CardHeader product={this.props.product} cardClassName={this.props.cssClassName} />
-                <CardBody product={this.props.product} cardClassName={this.props.cssClassName} />
-                <CardFooter
+                <CardBody
                     product={this.props.product}
                     cardClassName={this.props.cssClassName}
                     onActionItemClick={this.handleActionClick}
-                    activatedDropDownMenuName={this.props.activatedDropDownMenuName}
+                    activatedIdStoredInParent={this.props.activatedIdStoredInParent}
+                    decreaseStock={this.decreaseStock}
                 />
+                <CardFooter product={this.props.product} cardClassName={this.props.cssClassName} />
+
             </div>
         );
     }

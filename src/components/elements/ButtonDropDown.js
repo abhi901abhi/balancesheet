@@ -1,7 +1,6 @@
 import React from 'react';
 
 
-let menuClass = `dropdown-menu`;
 
 class ButtonDropdown extends React.Component {
 
@@ -9,53 +8,80 @@ class ButtonDropdown extends React.Component {
         super(props);
 
         this.state = {
-            open: false
+            open: false,
+            show: ' none',
+            localActivatedId: 'none'
         }
     }
 
 
     toggleOpen = (e) => {
-        debugger;
+
         var name = e.target.name;
+
         this.setState((prevState, props) => {
-            props.onActionItemClick(name, !JSON.parse(JSON.stringify(prevState.open)));
-            return {
-                open: !JSON.parse(JSON.stringify(prevState.open))
+
+
+            var item = {
+                localActivatedId: name
             }
+            if (props.activatedIdStoredInParent === name) {
+                if (prevState.show === ' show') {
+                    item.show = ' none';
+                }
+                else {
+                    item.show = ' show';
+                }
+            }
+            return item;
         });
+        this.props.onActionItemClick(name);
+
     }
 
+    decreaseStock = (qty, type, product) => {
+        this.props.decreaseStock(qty, type, product);
+    }
+
+    numberClick = (e) => {
+
+        var qty = parseFloat(e.target.innerText);
+        var type = e.target.getAttribute("type");
+        var { product } = this.props;
+
+        this.setState((prevState, props) => {
+
+            var item = {
+                show: ' none'
+            }
+            return item;
+        });
+        this.decreaseStock(qty, type, product);
+
+    }
+
+
+
     render() {
-        debugger;
-
-        if (this.props.isActive) {
-            menuClass = menuClass + ' show';
-        } else {
-            menuClass = `dropdown-menu`
-        }
-
         return (
-
             <div className="btn-group" >
                 <button type="button" className={`btn btn-${this.props.className}  mr-1`} name={this.props.product.name + '$$' + this.props.text} onClick={this.toggleOpen}>
-                    {this.props.text} - {this.props.isActive + ''}
+                    {this.props.text}
                 </button>
 
 
-                <div className={menuClass}>
-                    <span className="dropdown-item cursor-pointer ">
+                <div className={`dropdown-menu ${this.state.show}`}>
+                    <span className="dropdown-item cursor-pointer " onClick={this.numberClick} type={this.props.text}>
                         -1
                     </span>
-                    <span className="dropdown-item cursor-pointer">
+                    <span className="dropdown-item cursor-pointer" onClick={this.numberClick} type={this.props.text}>
                         -2
-                    </span><span className="dropdown-item cursor-pointer">
+                    </span>
+                    <span className="dropdown-item cursor-pointer" onClick={this.numberClick} type={this.props.text}>
                         -3
-                    </span><span className="dropdown-item cursor-pointer">
-                        +1
-                    </span><span className="dropdown-item cursor-pointer">
-                        +2
-                    </span><span className="dropdown-item cursor-pointer">
-                        +3
+                    </span>
+                    <span className="dropdown-item cursor-pointer" onClick={this.numberClick} type={this.props.text}>
+                        1
                     </span>
                 </div>
             </div>

@@ -1,65 +1,26 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import ButtonDropdown from './../elements/ButtonDropDown';
 
 class CardFooter extends React.Component {
 
-    state = {
-        activeItemName: 'none'
-    }
-
-    handleActionItemClick = (name, open) => {
-        debugger;
-        if (open) {
-            this.setState({
-                activeItemName: name
-            });
-            this.props.onActionItemClick(name);
-        }
-        else {
-            this.setState({
-                activeItemName: 'none'
-            });
-        }
-    }
-
     render() {
-        console.log('Card Footer Drop Down comp rendered');
-
         return (
-            <div className=" card-footer text-center">
-                <ButtonDropdown text="F" className="danger"
-                    product={this.props.product}
-                    onActionItemClick={this.handleActionItemClick}
-                    activatedDropDownMenuName={this.props.activatedDropDownMenuName}
-                    isActive={this.props.activatedDropDownMenuName === this.state.activeItemName}
-                ></ButtonDropdown>
+            <div className="card-body">
+                <h5 className="card-title">{this.props.product.name}</h5>
+                <p className="card-text text-center">
 
-                {/* <ButtonDropdown text="H" className="warning"
-                    product={this.props.product}
-
-                    onActionItemClick={this.handleActionItemClick}
-                    activatedDropDownMenuName={this.props.activatedDropDownMenuName}
-                ></ButtonDropdown>
-
-                <ButtonDropdown text="Q" className="success"
-                    product={this.props.product}
-                    onActionItemClick={this.handleActionItemClick}
-                    activatedDropDownMenuName={this.props.activatedDropDownMenuName}
-                ></ButtonDropdown>
-
-                <ButtonDropdown text="90" className="primary"
-                    product={this.props.product}
-                    onActionItemClick={this.handleActionItemClick}
-                    activatedDropDownMenuName={this.props.activatedDropDownMenuName}
-                ></ButtonDropdown> */}
-            </div>
+                    <img src={this.props.product.image} style={{ height: "150px", width: "150px" }} />
+                    <br />
+                </p>
+                Today Price:
+                <p>
+                    <span className={`badge badge-${this.props.cardClassName} mr-1 text-${this.props.cardClassName}`}>F ({this.props.product.todayPrice.full})</span>
+                    <span className={`badge badge-${this.props.cardClassName} mr-1 text-${this.props.cardClassName}`}>H ({this.props.product.todayPrice.half})</span>
+                    <span className={`badge badge-${this.props.cardClassName} mr-1  text-${this.props.cardClassName}`}>Q ({this.props.product.todayPrice.quarter})</span>
+                    <span className={`badge badge-${this.props.cardClassName} mr-1  text-${this.props.cardClassName}`}>90 ({this.props.product.todayPrice.ninty})</span>
+                </p>
+            </div >
         );
     }
 }
 
 export default CardFooter;
-
-
-    // https://material-ui.com/lab/speed-dial/

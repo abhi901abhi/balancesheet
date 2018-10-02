@@ -13,7 +13,8 @@
     "react-mfb": "^0.6.0",
     "react-router": "3.2.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.5"
+    "react-scripts": "1.1.5",
+    "react-toastify": "^4.4.0"
   },
   "scripts": {
     "start": "set PORT=3006 &&  react-scripts start",

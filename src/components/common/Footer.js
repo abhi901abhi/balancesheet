@@ -50,7 +50,7 @@ class Footer extends React.Component {
     render() {
 
         return (
-            <footer class="container-fluid w-100 bg-dark text-light py-3">
+            <footer className="container-fluid w-100 bg-dark text-light py-3">
                 {dateWithFullMonthName},
                 <span className="pull-right">{this.state.timeNow}</span>
             </footer>
