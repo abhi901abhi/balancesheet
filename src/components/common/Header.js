@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import NavLink from './../../modules/NavLink';
 
+
+
 class Header extends React.Component {
     constructor(props) {
         super(props);
@@ -46,24 +48,15 @@ class Header extends React.Component {
 
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
-                            <NavLink to="/" onSelect={this.handleClick} name="home" selected={this.state.selected}>Home</NavLink >
-                            <NavLink to="/courses" onSelect={this.handleClick} name="courses" selected={this.state.selected}>courses</NavLink >
-                            <NavLink to="/products" onSelect={this.handleClick} name="products" selected={this.state.selected}>Products</NavLink >
-                            <NavLink to="/admin" onSelect={this.handleClick} name="admin" selected={this.state.selected}>Admin area</NavLink >
+                            <NavLink to="/" onSelect={this.handleClick} name="home" selected={this.state.selected}>
+                                <i class="fa fa-home" aria-hidden="true"></i> Home
+                                </NavLink >
+                            <NavLink to="/products" onSelect={this.handleClick} name="products" selected={this.state.selected}><i class="fa fa-dashboard"></i> Dashboard</NavLink >
 
-                            {/* <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Dropdown        </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a className="dropdown-item" href="#">Action</a>
-                                    <a className="dropdown-item" href="#">Another action</a>
-                                    <div className="dropdown-divider"></div>
-                                    <a className="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </li> */}
-                            {/* <li className="nav-item">
-                                <a className="nav-link disabled" href="#">Disabled</a>
-                            </li> */}
+                            {/* <NavLink to="/courses" onSelect={this.handleClick} name="courses" selected={this.state.selected}>courses</NavLink > */}
+                            <NavLink to="/admin" onSelect={this.handleClick} name="admin" selected={this.state.selected}>
+                                <i class="fa fa-lock" aria-hidden="true"></i> Admin
+                            </NavLink >
                         </ul>
                         <form className="form-inline my-2 my-lg-0">
                             <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />

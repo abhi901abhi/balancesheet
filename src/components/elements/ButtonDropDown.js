@@ -14,14 +14,27 @@ class ButtonDropdown extends React.Component {
         }
     }
 
+    componentDidUpdate(prevProps) {
+
+        // The componentDidUpdate is particularly useful when an operation needs to happen 
+        // after the DOM is updated and the update queue is emptied. It's probably most useful
+        //  on complex renders and state or DOM changes or when you need something to be the absolutely
+        //   last thing to be executed.
+        const name = this.props.product.name + '$$' + this.props.text;
+        debugger;
+        if (prevProps.activatedIdStoredInParent !== this.props.activatedIdStoredInParent
+            &&
+            this.props.activatedIdStoredInParent !== name) {
+            this.setState({
+                show: ' none'
+            });
+        }
+    }
+
 
     toggleOpen = (e) => {
-
         var name = e.target.name;
-
         this.setState((prevState, props) => {
-
-
             var item = {
                 localActivatedId: name
             }
@@ -36,7 +49,6 @@ class ButtonDropdown extends React.Component {
             return item;
         });
         this.props.onActionItemClick(name);
-
     }
 
     decreaseStock = (qty, type, product) => {
@@ -44,7 +56,6 @@ class ButtonDropdown extends React.Component {
     }
 
     numberClick = (e) => {
-
         var qty = parseFloat(e.target.innerText);
         var type = e.target.getAttribute("type");
         var { product } = this.props;
@@ -57,10 +68,7 @@ class ButtonDropdown extends React.Component {
             return item;
         });
         this.decreaseStock(qty, type, product);
-
     }
-
-
 
     render() {
         return (

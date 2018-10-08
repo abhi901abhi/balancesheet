@@ -26,3 +26,12 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+
+.nav-item.active    
+{
+    background-color: #27a243;;
+    color: black;
+    border-radius: 7px;
+    font-weight: bold;
+}
