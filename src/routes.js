@@ -8,5 +8,6 @@ export default (
     <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/courses" component={CoursesPage} />
+        <Route path="/admin" component={AdminPage} />
     </Switch>
 );

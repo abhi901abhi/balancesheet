@@ -29,7 +29,7 @@ class CardBody extends React.Component {
                     decreaseStock={this.decreaseStock}
                 ></ButtonDropdown>
 
-                {/* <ButtonDropdown text="Q" className="success"
+                <ButtonDropdown text="Q" className="success"
                     product={this.props.product}
                     onActionItemClick={this.handleActionItemClick}
                     activatedIdStoredInParent={this.props.activatedIdStoredInParent}
@@ -41,7 +41,7 @@ class CardBody extends React.Component {
                     onActionItemClick={this.handleActionItemClick}
                     activatedIdStoredInParent={this.props.activatedIdStoredInParent}
                     decreaseStock={this.decreaseStock}
-                ></ButtonDropdown> */}
+                ></ButtonDropdown>
             </div>
         );
     }

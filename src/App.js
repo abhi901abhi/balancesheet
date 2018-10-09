@@ -4,22 +4,27 @@ import './App.css';
 import Header from './components/common/Header';
 import { BrowserRouter as Router, Route, Link, NavLink, Switch } from 'react-router-dom';
 import HomePage from './components/Home/HomePage';
-import CoursesPage from './components/Courses/CoursesPage';
 import Footer from './components/common/Footer';
+import AdminPage from './components/Admin/AdminPage';
+import DashBoardPage from './components/Dashboard/DashBoardPage';
+import ProductsPage from './components/Products/ProductsPage';
 
 const App = props => ({
   render() {
     return (
       <div>
-        <Header />
-        <br />
-        <br />
-        <br />
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/courses" component={CoursesPage} />
-        </Switch>
-
+        <div id="wrap">
+          <Header />
+          <div class="container">
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+              <Route path="/dashboard" component={DashBoardPage} />
+              <Route path="/products" component={ProductsPage} />
+              <Route path="/admin" component={AdminPage} />
+            </Switch>
+          </div>
+          <div id="push"></div>
+        </div>
         <Footer />
       </div>
     );

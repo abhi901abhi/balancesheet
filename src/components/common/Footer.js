@@ -50,8 +50,16 @@ class Footer extends React.Component {
     render() {
 
         return (
+
+
+            // <div id="footer">
+            //     <div class="container">
+            //         <p class="muted credit">Example courtesy <a href="http://martinbean.co.uk">Martin Bean</a> and <a href="http://ryanfait.com/sticky-footer/">Ryan Fait</a>.</p>
+            //     </div>
+            // </div>
+
             <footer className="container-fluid w-100 bg-dark text-light py-3">
-                {dateWithFullMonthName},
+                {dateWithFullMonthName}
                 <span className="pull-right">{this.state.timeNow}</span>
             </footer>
 

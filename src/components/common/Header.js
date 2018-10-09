@@ -51,9 +51,9 @@ class Header extends React.Component {
                             <NavLink to="/" onSelect={this.handleClick} name="home" selected={this.state.selected}>
                                 <i class="fa fa-home" aria-hidden="true"></i> Home
                                 </NavLink >
-                            <NavLink to="/products" onSelect={this.handleClick} name="products" selected={this.state.selected}><i class="fa fa-dashboard"></i> Dashboard</NavLink >
+                            <NavLink to="/dashboard" onSelect={this.handleClick} name="dashboard" selected={this.state.selected}><i class="fa fa-dashboard"></i> Dashboard</NavLink >
 
-                            {/* <NavLink to="/courses" onSelect={this.handleClick} name="courses" selected={this.state.selected}>courses</NavLink > */}
+                            <NavLink to="/products" onSelect={this.handleClick} name="products" selected={this.state.selected}>Products</NavLink >
                             <NavLink to="/admin" onSelect={this.handleClick} name="admin" selected={this.state.selected}>
                                 <i class="fa fa-lock" aria-hidden="true"></i> Admin
                             </NavLink >

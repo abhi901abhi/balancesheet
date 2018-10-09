@@ -7,8 +7,12 @@ import ReactDOM from 'react-dom';
 
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter } from 'react-router-dom';
+
+import configureStore from './store/configureStore';
+import { Provider } from 'react-redux';
 import App from './App';
 
+const store = configureStore();
 
 const Root = () => (
     <BrowserRouter>
@@ -18,7 +22,9 @@ const Root = () => (
 
 
 ReactDOM.render(
-    <Root />,
+    <Provider store={store}>
+        <Root />
+    </Provider>,
     document.getElementById('root')
 );
 registerServiceWorker();
