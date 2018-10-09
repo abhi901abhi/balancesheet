@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as productActions from './../../actions/productActions';
 
-
 class ProductsPage extends React.Component {
   constructor(props) {
     super(props);
@@ -12,9 +11,6 @@ class ProductsPage extends React.Component {
     }
     this.onProductSave = this.onProductSave.bind(this);
     this.onChange = this.onChange.bind(this);
-  }
-  componentWillMount() {
-    this.props.actions.fetchProducts();
   }
 
   onProductSave(product) {
@@ -40,6 +36,7 @@ class ProductsPage extends React.Component {
         <hr />
         <input type="text" onChange={this.onChange} />
         <button onClick={() => this.onProductSave(this.state.product)}>Save</button>
+        <hr />
       </div>
     );
   }
