@@ -49,13 +49,13 @@ class Header extends React.Component {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
                             <NavLink to="/" onSelect={this.handleClick} name="home" selected={this.state.selected}>
-                                <i class="fa fa-home" aria-hidden="true"></i> Home
+                                <i className="fa fa-home" aria-hidden="true"></i> Home
                                 </NavLink >
-                            <NavLink to="/dashboard" onSelect={this.handleClick} name="dashboard" selected={this.state.selected}><i class="fa fa-dashboard"></i> Dashboard</NavLink >
+                            <NavLink to="/dashboard" onSelect={this.handleClick} name="dashboard" selected={this.state.selected}><i className="fa fa-dashboard"></i> Dashboard</NavLink >
 
                             <NavLink to="/products" onSelect={this.handleClick} name="products" selected={this.state.selected}>Products</NavLink >
                             <NavLink to="/admin" onSelect={this.handleClick} name="admin" selected={this.state.selected}>
-                                <i class="fa fa-lock" aria-hidden="true"></i> Admin
+                                <i className="fa fa-lock" aria-hidden="true"></i> Admin
                             </NavLink >
                         </ul>
                         <form className="form-inline my-2 my-lg-0">

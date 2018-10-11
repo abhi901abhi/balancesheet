@@ -26,7 +26,7 @@ class HomePage extends React.Component {
   }
 
   onSearchChange(e) {
-    debugger;
+
     var searchedText = e.target.value;
     var filterList = this.state.masterProducts;
 

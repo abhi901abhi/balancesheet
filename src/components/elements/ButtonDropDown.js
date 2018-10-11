@@ -21,7 +21,7 @@ class ButtonDropdown extends React.Component {
         //  on complex renders and state or DOM changes or when you need something to be the absolutely
         //   last thing to be executed.
         const name = this.props.product.name + '$$' + this.props.text;
-        debugger;
+
         if (prevProps.activatedIdStoredInParent !== this.props.activatedIdStoredInParent
             &&
             this.props.activatedIdStoredInParent !== name) {

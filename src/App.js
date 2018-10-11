@@ -15,7 +15,7 @@ const App = props => ({
       <div>
         <div id="wrap">
           <Header />
-          <div class="container">
+          <div className="container">
             <Switch>
               <Route exact path="/" component={HomePage} />
               <Route path="/dashboard" component={DashBoardPage} />

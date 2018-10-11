@@ -1,8 +1,8 @@
 import * as types from './../actions/actionTypes';
 import initialState from './initialState';
 
-export default function courseReducer(state = initialState.products, action) {
-    debugger;
+export default function productReducer(state = initialState.products, action) {
+
     switch (action.type) {
         case types.CREATE_PRODUCT:
             const newState = [
@@ -10,10 +10,9 @@ export default function courseReducer(state = initialState.products, action) {
                 action.product
             ];
             return newState;
+        case types.LOAD_PRODUCTS_SUCCESS:
 
-        case types.FETCH_PRODUCTS:
-            return state;
-
+            return action.products;
         default:
             return state;
     }
