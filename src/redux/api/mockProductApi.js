@@ -20,7 +20,7 @@ const products = [{
         "ninty": 1
     },
     "bookmarked": "true",
-    "category":"whisky"
+    "category": "whisky"
 },
 {
     "name": "White Horse",
@@ -39,7 +39,7 @@ const products = [{
         "ninty": 1
     },
     "bookmarked": "true",
-    "category":"brandi"
+    "category": "brandi"
 
 },
 {
@@ -59,7 +59,7 @@ const products = [{
         "ninty": 1
     },
     "bookmarked": "true",
-    "category":"brandi"
+    "category": "brandi"
 
 },
 {
@@ -79,7 +79,7 @@ const products = [{
         "ninty": 1
     },
     "bookmarked": "true",
-    "category":"rum"
+    "category": "rum"
 
 },
 {
@@ -99,7 +99,7 @@ const products = [{
         "ninty": 1
     },
     "bookmarked": "true",
-    "category":"jin"
+    "category": "jin"
 
 },
 {
@@ -119,7 +119,7 @@ const products = [{
         "ninty": 1
     },
     "bookmarked": "true",
-    "category":"scotch"
+    "category": "scotch"
 
 },
 {
@@ -139,7 +139,7 @@ const products = [{
         "ninty": 1
     },
     "bookmarked": "false",
-    "category":"breezer"
+    "category": "breezer"
 
 },
 {
@@ -159,7 +159,7 @@ const products = [{
         "ninty": 1
     },
     "bookmarked": "false",
-    "category":"beer"    
+    "category": "beer"
 }
 ];
 
@@ -207,12 +207,13 @@ class ProductApi {
         });
     }
 
-    static deleteProduct(productId) {
+    static deleteProduct(id) {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 const indexOfProductToDelete = products.findIndex(product => {
-                    product.productId == productId;
+                    return product.id == id;
                 });
+                debugger;
                 products.splice(indexOfProductToDelete, 1);
                 resolve();
             }, delay);
