@@ -50,11 +50,11 @@ export function loadProducts() {
 
 
 export function deleteAProduct(product) {
-    debugger;
+
     return function (dispatch, getState) {
         //api call
-        debugger;
-        let toastId = toast.info("Deletion in progress", { autoClose: false });
+
+        let toastId = toast.info("Deletion in progress", { autoClose: false, closeOnClick: false, closeButton: false });
 
         return productApi.deleteProduct(product.id)
             .then(data => {
@@ -75,6 +75,16 @@ export function deleteAProduct(product) {
                 dispatch(deleteProductSuccess(product));
 
             }).catch(err => {
+                debugger;
+                toast.update(toastId, {
+                    render: "Reason:" + err,
+                    type: toast.TYPE.ERROR,
+                    className: css({
+                        transform: "rotateY(360deg)",
+                        transition: "transform 0.6s"
+                    }),
+                    autoClose: 2000
+                });
                 throw (err);
             });
     }

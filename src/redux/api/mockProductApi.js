@@ -213,7 +213,7 @@ class ProductApi {
                 const indexOfProductToDelete = products.findIndex(product => {
                     return product.id == id;
                 });
-                debugger;
+
                 products.splice(indexOfProductToDelete, 1);
                 resolve();
             }, delay);

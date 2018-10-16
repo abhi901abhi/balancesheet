@@ -8,7 +8,7 @@ import * as productActions from './../../redux/actions/productActions';
 
 const expandedRowRender = record => <p>{record.name}</p>;
 const title = function () {
-  debugger;
+
   return <h4 className="text-success">Products</h4>;
 };
 
@@ -40,39 +40,41 @@ class ProductsPage extends React.Component {
 
     //Popup and submit button
     this.state.buttonSubmitLoader = false;
-    this.state.visibleDeletePopup = false;
+    this.state.showManageProductPopup = false;
   }
 
   handleEdit = (product) => {
     this.setState({
-      visibleDeletePopup: true
+      showManageProductPopup: true
     });
 
     selectedProduct = [...[], product];
 
-    debugger;
+
   }
 
   showModal = () => {
     this.setState({
-      visibleDeletePopup: true,
+      showManageProductPopup: true,
     });
   }
 
   handleOk = () => {
     this.setState({ buttonSubmitLoader: true });
     setTimeout(() => {
-      this.setState({ buttonSubmitLoader: false, visibleDeletePopup: false });
+      this.setState({ buttonSubmitLoader: false, showManageProductPopup: false });
     }, 3000);
   }
 
   handleCancel = () => {
-    this.setState({ visibleDeletePopup: false });
+    this.setState({ showManageProductPopup: false });
   }
 
 
 
   render() {
+
+    console.log("Products page rendered");
     const state = this.state;
 
 
@@ -175,7 +177,7 @@ class ProductsPage extends React.Component {
         </Button> */}
         <Modal
           width={762}
-          visible={state.visibleDeletePopup}
+          visible={state.showManageProductPopup}
           title="Edit Product Stock / Delete Product"
           onOk={this.handleOk}
           onCancel={this.handleCancel}
@@ -205,7 +207,7 @@ class ProductsPage extends React.Component {
 
 
 
-      </div>
+      </div >
     );
   }
 
@@ -220,18 +222,26 @@ class ProductsPage extends React.Component {
   }
 
   handleDelete = product => {
-
-    this.props.actions.deleteAProduct(product);
-    this.setState({
-      visibleDeletePopup: false
-    });
+    var self = this;
+    this.props.actions.deleteAProduct(product).then((res) => {
+      this.props.actions.loadProducts().then(() => {
+        this.setState({
+          showManageProductPopup: false
+        });
+      });
+    }).catch((rej) => {
+      //here when you reject the promise
+      console.log(rej);
+      this.setState({
+        showManageProductPopup: false
+      });
+    });;
   }
 
   componentDidMount() {
     const props = this.props;
     props.actions.loadProducts();
   }
-
   courseRow(item, index) {
     return <li key={index}>{item.name}</li>;
   }
@@ -251,7 +261,7 @@ class ProductsPage extends React.Component {
   }
 
   getFooterDetails(products) {
-    return <label class="text-success">Total Records Count is {products.length}</label>;
+    return <label className="text-success" > Total Records Count is {products.length}</label>;
   }
 
 }

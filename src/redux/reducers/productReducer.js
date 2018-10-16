@@ -14,11 +14,7 @@ export default function productReducer(state = initialState.products, action) {
             return action.products;
         case types.DELETE_PRODUCTS_SUCCESS:
             debugger;
-            const newState1 = [
-                ...state,
-                action.product
-            ];
-            return newState1;
+            return state;
         default:
             return state;
     }
